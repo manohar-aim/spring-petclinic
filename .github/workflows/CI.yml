@@ -40,6 +40,10 @@ jobs:
       - name: Login to ECR
         uses: aws-actions/amazon-ecr-login@v2
 
+      - name: Create ECR repository 
+        run:
+          aws ecr create-repository --repository-name petclinic --region ${{ secrets.AWS_REGION }}
+
       - name: Tag Image
         run: |
           docker tag petclinic:latest \
