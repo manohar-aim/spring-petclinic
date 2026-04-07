@@ -9,20 +9,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      -name: checkout code
-       uses: actions/checkout@v4
+      - name: checkout code
+        uses: actions/checkout@v4
 
-      -name: give permission to mvnw
-       run: chmod +x mvnw
+      - name: give permission to mvnw
+        run: chmod +x mvnw
 
-      -name: setup java 17
-       uses: actons/setup-java@v4
-       with:
+      - name: setup java 17
+        uses: actons/setup-java@v4
+        with:
          distribution: 'temurin'
          java-version: '17'
 
-      -name: build JAR
-       run: ./mvnw clean package -DskipTests
+      - name: build JAR
+        run: ./mvnw clean package -DskipTests
 
-      -name: build Docker image
-       run: docker build -t petclinic
+      - name: build Docker image
+        run: docker build -t petclinic
