@@ -2,7 +2,8 @@
 name: myproject CI
 
 on:
-  push: ["main","test"]
+  push:
+   branches: ["main","test"]
 
 jobs:
   build:
