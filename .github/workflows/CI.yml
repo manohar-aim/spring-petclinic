@@ -27,7 +27,7 @@ jobs:
       - name: Build Docker image
         run: docker build -t petclinic .
 
-    steps:
+   steps:
       - name: checkout code
         uses: actions/checkout@v4
 
