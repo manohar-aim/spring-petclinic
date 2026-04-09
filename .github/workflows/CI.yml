@@ -28,7 +28,7 @@ jobs:
         run: echo "IMAGE_TAG = ${{github.sha}}" >> $GITHUB_ENV
 
       - name: Build Docker image
-        run: docker build -t petclinic .
+        run: docker build -t petclinic:$IMAGE_TAG .
 
       - name: checkout code
         uses: actions/checkout@v4
@@ -48,13 +48,13 @@ jobs:
 
       - name: Tag Image
         run: |
-          docker tag petclinic:IMAGE_TAG \
-          ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/petclinic:IMAGE_TAG
+          docker tag petclinic:$IMAGE_TAG \
+          ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/petclinic:$IMAGE_TAG
 
       - name: Push to ECR
         run: |
           docker push \
-          ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/petclinic:IMAGE_TAG
+          ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/petclinic:$IMAGE_TAG
 
       - name: Deploy to ec2
         uses: appleboy/ssh-action@v0.1.10
