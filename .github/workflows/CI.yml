@@ -48,7 +48,7 @@ jobs:
 
       - name: Tag Image
         run: |
-          docker tag petclinic:latest \
+          docker tag petclinic:IMAGE_TAG \
           ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/petclinic:IMAGE_TAG
 
       - name: Push to ECR
