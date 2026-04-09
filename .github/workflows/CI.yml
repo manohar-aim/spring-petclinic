@@ -25,7 +25,7 @@ jobs:
         run: ./mvnw clean package -DskipTests
 
       - name: tag image
-        run: echo "IMAGE_TAG = ${{github.sha}}" >> $GITHUB_ENV
+        run: echo "IMAGE_TAG=${{github.sha}}" >> $GITHUB_ENV
 
       - name: Build Docker image
         run: docker build -t petclinic:$IMAGE_TAG .
