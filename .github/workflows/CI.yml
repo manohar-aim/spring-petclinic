@@ -67,14 +67,14 @@ jobs:
 
             echo "login to ecr and pull image with docker"
             aws ecr get-login-password --region ${{ secrets.AWS_REGION }} \
-            | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
+            | sudo docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
 
             echo "Pull image"
-            docker pull $IMG
+            sudo docker pull $IMG
 
             echo "Stop old container"
-            docker stop petclinic || true
-            docker rm petclinic || true
+            sudo docker stop petclinic || true
+            sudo docker rm petclinic || true
 
             echo "Run new container"
-            docker run -d --name petclinic -p 8080:8080 $IMG
+            sudo docker run -d --name petclinic -p 8080:8080 $IMG
