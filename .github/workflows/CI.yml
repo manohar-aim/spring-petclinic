@@ -77,4 +77,4 @@ jobs:
             sudo docker rm petclinic || true
 
             echo "Run new container"
-            sudo docker run -d --name petclinic -p 8080:8080 $IMG
+            sudo docker run -d --name petclinic -p 8080:8080 $IMG 
