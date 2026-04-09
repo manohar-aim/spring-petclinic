@@ -61,4 +61,4 @@ spec:
           projected:
             sources:
               - secret:
-                  name: demo-db
+                  name: demo-db   
