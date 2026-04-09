@@ -21,8 +21,10 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Build JAR
-        run: ./mvnw clean package -DskipTests
+      - name: Build with Maven
+        run: |
+         ./mvnw spring-javaformat:apply
+         ./mvnw clean package
 
       - name: tag image
         run: echo "IMAGE_TAG=${{github.sha}}" >> $GITHUB_ENV
